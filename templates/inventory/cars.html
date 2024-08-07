@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+
+    <table class="table">
+      <a href="{% url 'add_new_car' %}" class="btn btn-primary"> Add New Car</a>
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Make</th>
+        <th scope="col">Model</th>
+        <th scope="col">Year</th>
+        <th scope="col">Price</th>
+        <th scope="col">Edit</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for car in cars %}
+            <tr>
+                <th scope="row">{{ car.id }}</th>
+                <td scope="row">{{ car.make }}</td>
+                <td scope="row">{{ car.carModel }}</td>
+                <td scope="row">{{ car.year }}</td>
+                <td scope="row">{{car.price}}</td>
+                <th scope="row"><a class="btn btn-outline-primary" href="{% url 'car_edit' car.id %}">Edit</a></th>
+            </tr>
+        {% endfor %}
+    </tbody>
+  </table>
+
+</div>  
+{% endblock %}

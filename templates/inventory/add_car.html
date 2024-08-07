@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block content %}
+   <div class="container">
+    <form method="post">
+        {% csrf_token %}
+        <div class="row">
+            <div class="col-6">
+                <label class="control-label" for="make">Make</label>
+                {{form.make}}
+            </div>
+            <div class="col-6">
+                <label class="control-label" for="carModel">Model</label>
+                {{form.carModel}}
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-6">
+                <label class="control-label" for="year">Year</label>
+                {{form.year}}
+            </div>
+            <div class="col-6">
+                <label class="control-label" for="price">Price</label>
+                {{form.price}}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <label class="control-label" for="description">Description</label>
+                {{form.description}}
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+   </div>
+{% endblock %}
