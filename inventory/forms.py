@@ -4,7 +4,7 @@ from django import forms
 class inventoryForm(forms.ModelForm):
     class Meta:
         model = Car
-        fields = '__all__'
+        fields = ['make', 'carModel', 'year', 'price', 'description']
     
     make = forms.CharField(
         max_length=100,

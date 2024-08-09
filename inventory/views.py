@@ -39,7 +39,7 @@ def index(request):
 
 
 def all_cars(request):
-    cars = Car.objects.all()
+    cars = Car.objects.filter(person=request.user)
 
     context = {
         'cars': cars
@@ -51,7 +51,13 @@ def all_cars(request):
 def add_new_car(request):
     if request.method == 'POST':
         form = inventoryForm(request.POST)
-        form.save()
+        if form.is_valid():
+            newCar = form.save(commit=False)
+            newCar.person = request.user
+            newCar.save()
+            return redirect('all_cars')
+        else:
+             print(form.errors)
 
     else:
         form = inventoryForm()
